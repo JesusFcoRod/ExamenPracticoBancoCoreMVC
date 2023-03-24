@@ -1,0 +1,62 @@
+﻿@model ML.Banco
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>BANCOS GETALL</h1>
+
+<div class="container">
+    <div class="row">
+        <h2>BANCOS REGISTRADOS</h2>
+    </div>
+    <div class="row">
+        <div style="float:right;">
+            @Html.ActionLink("Agregar", "Form", "Banco", htmlAttributes: new { @class = "btn btn-success" })
+        </div>
+        <br />
+        @if (Model.Bancos != null)
+        {
+            <table class="table table-bordered table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <td class="text-center" style="font-weight:bold">Editar</td>
+
+                        <td class="text-center" style="font-weight:bold">Nombre Banco</td>
+                        <td class="text-center" style="font-weight:bold">Empleados</td>
+                        <td class="text-center" style="font-weight:bold">Sucursales</td>
+                        <td class="text-center" style="font-weight:bold">Pais</td>
+                        <td class="text-center" style="font-weight:bold">Capital</td>
+                        <td class="text-center" style="font-weight:bold">Razon Social</td>
+                        <td class="text-center" style="font-weight:bold">Clientes</td>
+
+                        <td class="text-center" style="font-weight:bold">Eliminar</td>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (ML.Banco banco in Model.Bancos)
+                    {
+                        <tr>
+
+                            <td class="text-center"><a class="bi bi-pencil-square " href="@Url.Action("Form","Banco", new {IdBanco = banco.IdBanco})"></a></td>
+                            <td class="text-center">@banco.Nombre</td>
+                            <td class="text-center">@banco.NoEmpleado</td>
+                            <td class="text-center">@banco.NoSucursales</td>
+                            <td class="text-center">@banco.Pais.Nombre</td>
+                            <td class="text-center">@banco.Capital</td>
+                            <td class="text-center">@banco.RazonSocial.Nombre</td>
+                            <td class="text-center">@banco.NoClientes</td>
+                            <td class="text-center"><a class="bi bi-trash3-fill " href="@Url.Action("Delete","Banco", new {IdBanco = banco.IdBanco})"></a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+
+        }
+    </div>
+</div>

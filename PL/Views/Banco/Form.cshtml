@@ -1,0 +1,96 @@
+﻿@model ML.Banco
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>REGISTRO DE BANCOS</h2>
+
+<div class="row">
+    <div class="col-12">
+        <h5>Ingrese los datos del Banco:</h5>
+    </div>
+</div>
+</hr>
+
+@using (Html.BeginForm("Form", "Banco", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-md-1" style="display: none;">
+            @Html.TextBoxFor(model => model.IdBanco, new { @class = "hidden form-control", autocomplete = "off" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Nombre)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Nombre, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.NoEmpleado)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.NoEmpleado, new { @class = "form-control", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.NoEmpleado, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.NoSucursales)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.NoSucursales, new { @class = "form-control", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.NoSucursales, null, new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Pais.Nombre, "Pais")
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Pais.Nombre, new { @class = "form-control", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Pais.Nombre, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Capital)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.Capital, new { @class = "form-control", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.Capital, null, new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.RazonSocial.Nombre, "Razon Social")
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.RazonSocial.Nombre, new { @class = "form-control", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.RazonSocial.Nombre, null, new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.NoClientes)
+            <div class="input-group mb-2">
+                <span class="input-group-text"><i class="bi bi-controller"></i></span>
+                @Html.TextBoxFor(model => model.NoClientes, new { @class = "form-control", autocomplete = "off" })
+                @Html.ValidationMessageFor(model => model.NoClientes, null, new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="glyphicon-up">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                    @Html.ActionLink("Regresar", "GetAll", "Banco", htmlAttributes: new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
